@@ -13,8 +13,10 @@ addDialog::addDialog(QWidget *parent) :
         return;
     };
     model = new QSqlTableModel(this,db);
-    ui->locationBox->setModel(model);
+    model->setTable("geodata");
     model->select();
+    ui->locationBox->setModel(model);
+    ui->locationBox->setModelColumn(3);
 }
 
 addDialog::~addDialog()

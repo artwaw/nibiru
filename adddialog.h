@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QSqlError>
 #include <QSettings>
+#include <QDebug>
 
 namespace Ui {
 class addDialog;
