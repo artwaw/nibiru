@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 
+#include "adddialog.h"
+#include "setdialog.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -17,6 +20,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+private slots:
+    void addNewEvent();
+    void settingsClicked();
+    void quitClicked();
 };
 
 #endif // MAINWINDOW_H

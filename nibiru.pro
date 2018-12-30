@@ -26,13 +26,21 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    adddialog.cpp \
+    ephemeridsclass.cpp \
+    setdialog.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    adddialog.h \
+    ephemeridsclass.h \
+    setdialog.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    adddialog.ui \
+    setdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -45,3 +53,9 @@ DISTFILES += \
 
 RESOURCES += \
     res.qrc
+
+win32:CONFIG(release, debug|release): LIBS += -LD:/Qt/5.12.0/mingw73_64/lib/ -lQt5Sql
+else:win32:CONFIG(debug, debug|release): LIBS += -LD:/Qt/5.12.0/mingw73_64/lib/ -lQt5Sqld
+
+INCLUDEPATH += D:/Qt/5.12.0/mingw73_64/include
+DEPENDPATH += D:/Qt/5.12.0/mingw73_64/include

@@ -1,7 +1,13 @@
 #ifndef ADDDIALOG_H
 #define ADDDIALOG_H
 
+#include <QObject>
 #include <QDialog>
+#include <QSqlDatabase>
+#include <QSqlTableModel>
+#include <QMessageBox>
+#include <QSqlError>
+#include <QSettings>
 
 namespace Ui {
 class addDialog;
@@ -17,6 +23,9 @@ public:
 
 private:
     Ui::addDialog *ui;
+    QSqlDatabase db;
+    QSqlTableModel *model;
+    QSettings settings;
 };
 
 #endif // ADDDIALOG_H
