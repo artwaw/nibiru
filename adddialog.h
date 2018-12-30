@@ -9,6 +9,9 @@
 #include <QSqlError>
 #include <QSettings>
 #include <QDebug>
+#include <QSortFilterProxyModel>
+#include <QTableView>
+#include <QRegExp>
 
 namespace Ui {
 class addDialog;
@@ -26,7 +29,11 @@ private:
     Ui::addDialog *ui;
     QSqlDatabase db;
     QSqlTableModel *model;
+    QSortFilterProxyModel *pmodel;
     QSettings settings;
+
+private slots:
+    void setBoxHint(QString what);
 };
 
 #endif // ADDDIALOG_H

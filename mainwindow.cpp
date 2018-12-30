@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAdd,&QAction::triggered,this,&MainWindow::addNewEvent);
     connect(ui->actionSettings,&QAction::triggered,this,&MainWindow::settingsClicked);
     connect(ui->actionQuit,&QAction::triggered,this,&MainWindow::quitClicked);
+
 }
 
 MainWindow::~MainWindow()
