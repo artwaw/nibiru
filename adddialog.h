@@ -34,6 +34,8 @@ private:
 
 private slots:
     void setBoxHint(QString what);
+    void acceptCLicked();
+    void cancelClicked();
 };
 
 #endif // ADDDIALOG_H

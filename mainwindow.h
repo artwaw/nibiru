@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSettings>
 
 #include "adddialog.h"
 #include "setdialog.h"
@@ -20,6 +21,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QSettings settings;
 
 private slots:
     void addNewEvent();

@@ -18,6 +18,11 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::addNewEvent() {
+    QFile test(settings.value("geoFile").toString());
+    if (!test.exists()) {
+        QMessageBox::warning(this,"File not found","The geo.db file has not been found! Please provide correct settings in the settings panel.");
+        return;
+    };
     addDialog *addDialogEvent = new addDialog(this);
     addDialogEvent->exec();
     delete addDialogEvent;

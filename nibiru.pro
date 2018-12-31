@@ -59,3 +59,8 @@ else:win32:CONFIG(debug, debug|release): LIBS += -LD:/Qt/5.12.0/mingw73_64/lib/ 
 
 INCLUDEPATH += D:/Qt/5.12.0/mingw73_64/include
 DEPENDPATH += D:/Qt/5.12.0/mingw73_64/include
+
+mac: LIBS += -F$$PWD/../../../Qt/5.12.0/clang_64/lib/ -framework QtSql
+
+INCLUDEPATH += $$PWD/../../../Qt/5.12.0/clang_64/include
+DEPENDPATH += $$PWD/../../../Qt/5.12.0/clang_64/include

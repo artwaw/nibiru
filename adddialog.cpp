@@ -26,6 +26,7 @@ addDialog::addDialog(QWidget *parent) :
     ui->cityList->hideColumn(5);
     ui->cityList->hideColumn(6);
     connect(ui->citySearch,&QLineEdit::textChanged,this,&addDialog::setBoxHint);
+
 }
 
 addDialog::~addDialog()
