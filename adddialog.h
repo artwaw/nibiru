@@ -13,6 +13,8 @@
 #include <QTableView>
 #include <QRegExp>
 
+#include "adddialoggeomodel.h"
+
 namespace Ui {
 class addDialog;
 }
@@ -28,7 +30,7 @@ public:
 private:
     Ui::addDialog *ui;
     QSqlDatabase db;
-    QSqlTableModel *model;
+    addDialogGeoModel *model;
     QSortFilterProxyModel *pmodel;
     QSettings settings;
 

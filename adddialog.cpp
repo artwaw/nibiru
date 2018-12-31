@@ -12,7 +12,7 @@ addDialog::addDialog(QWidget *parent) :
         QMessageBox::critical(this,"Geo db open error",db.lastError().text()+settings.value("geoFile").toString());
         return;
     };
-    model = new QSqlTableModel(this,db);
+    model = new addDialogGeoModel(this,db);
     model->setTable("geodata");
     model->select();
     pmodel = new QSortFilterProxyModel(this);
@@ -21,12 +21,18 @@ addDialog::addDialog(QWidget *parent) :
     pmodel->setHeaderData(2,Qt::Horizontal,"Country",Qt::DisplayRole);
     pmodel->setHeaderData(3,Qt::Horizontal,"City",Qt::DisplayRole);
     pmodel->setHeaderData(4,Qt::Horizontal,"Postcode",Qt::DisplayRole);
+    pmodel->setFilterKeyColumn(3);
     ui->cityList->setModel(pmodel);
     ui->cityList->hideColumn(0);
     ui->cityList->hideColumn(5);
     ui->cityList->hideColumn(6);
+    ui->cityList->horizontalHeader()->stretchLastSection();
+    ui->cityList->resizeRowsToContents();
+    ui->cityList->resizeColumnsToContents();
+    ui->cityList->setSortingEnabled(true);
     connect(ui->citySearch,&QLineEdit::textChanged,this,&addDialog::setBoxHint);
-
+    connect(ui->okBtn,&QPushButton::clicked,this,&addDialog::acceptCLicked);
+    connect(ui->cancelBtn,&QPushButton::clicked,this,&addDialog::cancelClicked);
 }
 
 addDialog::~addDialog()
@@ -40,4 +46,17 @@ addDialog::~addDialog()
 void addDialog::setBoxHint(QString what){
     QRegExp regExp(what,Qt::CaseInsensitive,QRegExp::FixedString);
     pmodel->setFilterRegExp(regExp);
+    ui->cityList->selectRow(0);
+}
+
+void addDialog::acceptCLicked() {
+    if (ui->cityList->selectionModel()->hasSelection()) {
+        accept();
+    } else {
+        QMessageBox::warning(this,"Required data missing","Location needs to be selected in order to proceed");
+    };
+}
+
+void addDialog::cancelClicked() {
+    reject();
 }

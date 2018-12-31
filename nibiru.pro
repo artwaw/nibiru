@@ -29,18 +29,23 @@ SOURCES += \
         mainwindow.cpp \
     adddialog.cpp \
     ephemeridsclass.cpp \
-    setdialog.cpp
+    setdialog.cpp \
+    adddialoggeomodel.cpp \
+    splashdlg.cpp
 
 HEADERS += \
         mainwindow.h \
     adddialog.h \
     ephemeridsclass.h \
-    setdialog.h
+    setdialog.h \
+    adddialoggeomodel.h \
+    splashdlg.h
 
 FORMS += \
         mainwindow.ui \
     adddialog.ui \
-    setdialog.ui
+    setdialog.ui \
+    splashdlg.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -6,6 +6,8 @@
 
 #include "adddialog.h"
 #include "setdialog.h"
+#include "splashdlg.h"
+#include "adddialoggeomodel.h"
 
 namespace Ui {
 class MainWindow;
@@ -22,6 +24,8 @@ public:
 private:
     Ui::MainWindow *ui;
     QSettings settings;
+    addDialogGeoModel *geodbmodel;
+    QSqlDatabase geodb;
 
 private slots:
     void addNewEvent();
