@@ -3,12 +3,9 @@
 
 #include <QObject>
 #include <QDialog>
-#include <QSqlDatabase>
 #include <QSqlTableModel>
 #include <QMessageBox>
-#include <QSqlError>
 #include <QSettings>
-#include <QDebug>
 #include <QSortFilterProxyModel>
 #include <QTableView>
 #include <QRegExp>
@@ -27,10 +24,11 @@ public:
     explicit addDialog(QWidget *parent = nullptr);
     ~addDialog();
 
+    void setModel(QSqlTableModel *mdl);
+
 private:
     Ui::addDialog *ui;
     QSqlDatabase db;
-    addDialogGeoModel *model;
     QSortFilterProxyModel *pmodel;
     QSettings settings;
 

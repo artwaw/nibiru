@@ -6,31 +6,7 @@ addDialog::addDialog(QWidget *parent) :
     ui(new Ui::addDialog)
 {
     ui->setupUi(this);
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(settings.value("geoFile",QApplication::arguments().at(0)).toString());
-    if (!db.open()) {
-        QMessageBox::critical(this,"Geo db open error",db.lastError().text()+settings.value("geoFile").toString());
-        return;
-    };
-    model = new addDialogGeoModel(this,db);
-    model->setTable("geodata");
-    model->select();
-    pmodel = new QSortFilterProxyModel(this);
-    pmodel->setSourceModel(model);
-    pmodel->setHeaderData(1,Qt::Horizontal,"Continent",Qt::DisplayRole);
-    pmodel->setHeaderData(2,Qt::Horizontal,"Country",Qt::DisplayRole);
-    pmodel->setHeaderData(3,Qt::Horizontal,"City",Qt::DisplayRole);
-    pmodel->setHeaderData(4,Qt::Horizontal,"Postcode",Qt::DisplayRole);
-    pmodel->setFilterKeyColumn(3);
-    ui->cityList->setModel(pmodel);
-    ui->cityList->hideColumn(0);
-    ui->cityList->hideColumn(5);
-    ui->cityList->hideColumn(6);
-    ui->cityList->horizontalHeader()->stretchLastSection();
-    ui->cityList->resizeRowsToContents();
-    ui->cityList->resizeColumnsToContents();
-    ui->cityList->setSortingEnabled(true);
-    connect(ui->citySearch,&QLineEdit::textChanged,this,&addDialog::setBoxHint);
+
     connect(ui->okBtn,&QPushButton::clicked,this,&addDialog::acceptCLicked);
     connect(ui->cancelBtn,&QPushButton::clicked,this,&addDialog::cancelClicked);
 }
@@ -59,4 +35,23 @@ void addDialog::acceptCLicked() {
 
 void addDialog::cancelClicked() {
     reject();
+}
+
+void addDialog::setModel(QSqlTableModel *mdl) {
+    pmodel = new QSortFilterProxyModel(this);
+    pmodel->setSourceModel(mdl);
+    pmodel->setHeaderData(1,Qt::Horizontal,"Continent",Qt::DisplayRole);
+    pmodel->setHeaderData(2,Qt::Horizontal,"Country",Qt::DisplayRole);
+    pmodel->setHeaderData(3,Qt::Horizontal,"City",Qt::DisplayRole);
+    pmodel->setHeaderData(4,Qt::Horizontal,"Postcode",Qt::DisplayRole);
+    pmodel->setFilterKeyColumn(3);
+    ui->cityList->setModel(pmodel);
+    ui->cityList->hideColumn(0);
+    ui->cityList->hideColumn(5);
+    ui->cityList->hideColumn(6);
+    ui->cityList->horizontalHeader()->stretchLastSection();
+    ui->cityList->resizeRowsToContents();
+    ui->cityList->resizeColumnsToContents();
+    ui->cityList->setSortingEnabled(true);
+    connect(ui->citySearch,&QLineEdit::textChanged,this,&addDialog::setBoxHint);
 }

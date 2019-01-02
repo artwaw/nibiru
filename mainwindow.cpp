@@ -9,9 +9,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAdd,&QAction::triggered,this,&MainWindow::addNewEvent);
     connect(ui->actionSettings,&QAction::triggered,this,&MainWindow::settingsClicked);
     connect(ui->actionQuit,&QAction::triggered,this,&MainWindow::quitClicked);
-    splashDlg *splash = new splashDlg(this);
-    splash->setLabel("Loading settings...");
+    splashDlg *splash = new splashDlg(Q_NULLPTR);
     splash->show();
+    while (!splash->isVisible()) {};
+    splash->setLabel("Loading settings...");
     //global setting loaded here
     splash->setLabel("Loading geo database. This might take a while...");
     //loading geodb data here
@@ -25,9 +26,11 @@ MainWindow::MainWindow(QWidget *parent) :
         close();
         return;
     };
-    geodbmodel = new addDialogGeoModel(this,geodb);
+    geodbmodel = new addDialogGeoModel(Q_NULLPTR,geodb);
     geodbmodel->setTable("geodata");
     geodbmodel->select();
+    addDialogEvent = new addDialog(this);
+    addDialogEvent->setModel(geodbmodel);
     splash->setLabel("Loading other data...");
     splash->setProgressBar(66);
     splash->hide();
@@ -41,14 +44,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::addNewEvent() {
-    QFile test(settings.value("geoFile").toString());
-    if (!test.exists()) {
-        QMessageBox::warning(this,"File not found","The geo.db file has not been found! Please provide correct settings in the settings panel.");
-        return;
-    };
-    addDialog *addDialogEvent = new addDialog(this);
     addDialogEvent->exec();
-    delete addDialogEvent;
 }
 
 void MainWindow::settingsClicked() {

@@ -26,6 +26,7 @@ private:
     QSettings settings;
     addDialogGeoModel *geodbmodel;
     QSqlDatabase geodb;
+    addDialog *addDialogEvent;
 
 private slots:
     void addNewEvent();
