@@ -2,9 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSettings>
 
 #include "adddialog.h"
 #include "setdialog.h"
+#include "splashdlg.h"
+#include "adddialoggeomodel.h"
 
 namespace Ui {
 class MainWindow;
@@ -20,7 +23,14 @@ public:
 
 private:
     Ui::MainWindow *ui;
+<<<<<<< HEAD
     void zeroConfigDB();
+=======
+    QSettings settings;
+    addDialogGeoModel *geodbmodel;
+    QSqlDatabase geodb;
+    addDialog *addDialogEvent;
+>>>>>>> 64076b79319f01033a67d6a880a128c32e505265
 
 private slots:
     void addNewEvent();

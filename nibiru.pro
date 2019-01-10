@@ -29,18 +29,23 @@ SOURCES += \
         mainwindow.cpp \
     adddialog.cpp \
     ephemeridsclass.cpp \
-    setdialog.cpp
+    setdialog.cpp \
+    adddialoggeomodel.cpp \
+    splashdlg.cpp
 
 HEADERS += \
         mainwindow.h \
     adddialog.h \
     ephemeridsclass.h \
-    setdialog.h
+    setdialog.h \
+    adddialoggeomodel.h \
+    splashdlg.h
 
 FORMS += \
         mainwindow.ui \
     adddialog.ui \
-    setdialog.ui
+    setdialog.ui \
+    splashdlg.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -59,3 +64,8 @@ else:win32:CONFIG(debug, debug|release): LIBS += -LD:/Qt/5.12.0/mingw73_64/lib/ 
 
 INCLUDEPATH += D:/Qt/5.12.0/mingw73_64/include
 DEPENDPATH += D:/Qt/5.12.0/mingw73_64/include
+
+mac: LIBS += -F$$PWD/../../../Qt/5.12.0/clang_64/lib/ -framework QtSql
+
+INCLUDEPATH += $$PWD/../../../Qt/5.12.0/clang_64/include
+DEPENDPATH += $$PWD/../../../Qt/5.12.0/clang_64/include
