@@ -61,7 +61,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Geo.db file location:</string>
+      <string>&amp;Geo.db file location:</string>
+     </property>
+     <property name="buddy">
+      <cstring>geoLocationEdit</cstring>
      </property>
     </widget>
     <widget class="QLineEdit" name="geoLocationEdit">
@@ -84,7 +87,46 @@
       </rect>
      </property>
      <property name="text">
-      <string>Browse</string>
+      <string>&amp;Find geo.db</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Working &amp;database:</string>
+     </property>
+     <property name="buddy">
+      <cstring>dbLocationEdit</cstring>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="dbLocationEdit">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>40</y>
+       <width>171</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="dbBrowseBtn">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>40</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>F&amp;ind db</string>
      </property>
     </widget>
    </widget>

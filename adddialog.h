@@ -12,6 +12,7 @@
 #include <QSortFilterProxyModel>
 #include <QTableView>
 #include <QRegExp>
+#include <QStandardPaths>
 
 namespace Ui {
 class addDialog;
@@ -34,6 +35,7 @@ private:
 
 private slots:
     void setBoxHint(QString what);
+    void okBtnClicked();
 };
 
 #endif // ADDDIALOG_H

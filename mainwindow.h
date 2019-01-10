@@ -20,6 +20,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    void zeroConfigDB();
 
 private slots:
     void addNewEvent();

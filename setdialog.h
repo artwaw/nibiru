@@ -5,6 +5,7 @@
 #include <QSettings>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QStandardPaths>
 
 namespace Ui {
 class setDialog;
@@ -26,6 +27,7 @@ private slots:
     void okBtnClicked();
     void cancelBtnClicked();
     void geoBrowseBtnClicked();
+    void dbBrowseBtnClicked();
 };
 
 #endif // SETDIALOG_H
