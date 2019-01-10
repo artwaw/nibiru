@@ -10,6 +10,7 @@
 #include <QTableView>
 #include <QRegExp>
 #include <QStandardPaths>
+#include <QSqlError>
 
 #include "adddialoggeomodel.h"
 
@@ -24,23 +25,19 @@ class addDialog : public QDialog
 public:
     explicit addDialog(QWidget *parent = nullptr);
     ~addDialog();
-
     void setModel(QSqlTableModel *mdl);
 
 private:
     Ui::addDialog *ui;
     QSqlDatabase db;
+    QSqlTableModel *model;
     QSortFilterProxyModel *pmodel;
     QSettings settings;
 
 private slots:
     void setBoxHint(QString what);
-<<<<<<< HEAD
-    void okBtnClicked();
-=======
     void acceptCLicked();
     void cancelClicked();
->>>>>>> 64076b79319f01033a67d6a880a128c32e505265
 };
 
 #endif // ADDDIALOG_H

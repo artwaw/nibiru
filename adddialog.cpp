@@ -6,7 +6,6 @@ addDialog::addDialog(QWidget *parent) :
     ui(new Ui::addDialog)
 {
     ui->setupUi(this);
-<<<<<<< HEAD
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(settings.value("geoFile",QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)+"/geo.db").toString());
     if (!db.open()) {
@@ -29,11 +28,9 @@ addDialog::addDialog(QWidget *parent) :
     ui->citySearch->setText(settings.value("lastCity","").toString());
     connect(ui->citySearch,&QLineEdit::textChanged,this,&addDialog::setBoxHint);
     connect(ui->okBtn,&QPushButton::clicked,this,&addDialog::okBtnClicked);
-=======
 
     connect(ui->okBtn,&QPushButton::clicked,this,&addDialog::acceptCLicked);
     connect(ui->cancelBtn,&QPushButton::clicked,this,&addDialog::cancelClicked);
->>>>>>> 64076b79319f01033a67d6a880a128c32e505265
 }
 
 addDialog::~addDialog()
@@ -52,6 +49,13 @@ void addDialog::setBoxHint(QString what){
 
 void addDialog::acceptCLicked() {
     if (ui->cityList->selectionModel()->hasSelection()) {
+        //check for data
+        if (ui->nameEdit->text().isEmpty()||ui->surnameEdit->text().isEmpty()||!ui->cityList->selectionModel()->hasSelection()||ui->eventBox->currentIndex()<0) {
+            QMessageBox::warning(this,"Not enough data","Name, surname, city and event type are mandatory!");
+            return;
+        };
+        //remember last city
+        settings.setValue("lastCity",ui->cityList->selectionModel()->currentIndex().siblingAtColumn(3).data());
         accept();
     } else {
         QMessageBox::warning(this,"Required data missing","Location needs to be selected in order to proceed");
@@ -79,15 +83,4 @@ void addDialog::setModel(QSqlTableModel *mdl) {
     ui->cityList->resizeColumnsToContents();
     ui->cityList->setSortingEnabled(true);
     connect(ui->citySearch,&QLineEdit::textChanged,this,&addDialog::setBoxHint);
-}
-
-void addDialog::okBtnClicked() {
-    //check for data
-    if (ui->nameEdit->text().isEmpty()||ui->surnameEdit->text().isEmpty()||!ui->cityList->selectionModel()->hasSelection()||ui->eventBox->currentIndex()<0) {
-        QMessageBox::warning(this,"Not enough data","Name, surname, city and event type are mandatory!");
-        return;
-    };
-    //remember last city
-    settings.setValue("lastCity",ui->cityList->selectionModel()->currentIndex().siblingAtColumn(3).data());
-    accept();
 }
