@@ -40,23 +40,10 @@
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QPushButton" name="pushButton">
-        <property name="maximumSize">
-         <size>
-          <width>75</width>
-          <height>23</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Search</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </item>
     <item row="1" column="0">
-     <widget class="QTreeView" name="treeView"/>
+     <widget class="QTableView" name="eventListView"/>
     </item>
    </layout>
   </widget>
@@ -140,15 +127,6 @@
    </property>
    <property name="text">
     <string>Help</string>
-   </property>
-  </action>
-  <action name="actionSearch">
-   <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/img/lookup.png</normaloff>:/img/lookup.png</iconset>
-   </property>
-   <property name="text">
-    <string>Search</string>
    </property>
   </action>
   <action name="actionAdd">

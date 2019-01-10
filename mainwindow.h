@@ -3,11 +3,13 @@
 
 #include <QMainWindow>
 #include <QSettings>
+#include <QSqlQuery>
 
 #include "adddialog.h"
 #include "setdialog.h"
 #include "splashdlg.h"
 #include "adddialoggeomodel.h"
+#include "eventviewmodelclass.h"
 
 namespace Ui {
 class MainWindow;
@@ -26,7 +28,9 @@ private:
     void zeroConfigDB();
     QSettings settings;
     addDialogGeoModel *geodbmodel;
-    QSqlDatabase geodb;
+    QSqlDatabase geodb, eventdb;
+    eventViewModelClass *emodel;
+    QSortFilterProxyModel *eproxy;
     addDialog *addDialogEvent;
 
 private slots:

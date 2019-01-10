@@ -31,7 +31,8 @@ SOURCES += \
     ephemeridsclass.cpp \
     setdialog.cpp \
     adddialoggeomodel.cpp \
-    splashdlg.cpp
+    splashdlg.cpp \
+    eventviewmodelclass.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,7 +40,8 @@ HEADERS += \
     ephemeridsclass.h \
     setdialog.h \
     adddialoggeomodel.h \
-    splashdlg.h
+    splashdlg.h \
+    eventviewmodelclass.h
 
 FORMS += \
         mainwindow.ui \

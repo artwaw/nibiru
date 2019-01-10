@@ -27,8 +27,6 @@ addDialog::addDialog(QWidget *parent) :
     ui->cityList->hideColumn(6);
     ui->citySearch->setText(settings.value("lastCity","").toString());
     connect(ui->citySearch,&QLineEdit::textChanged,this,&addDialog::setBoxHint);
-    connect(ui->okBtn,&QPushButton::clicked,this,&addDialog::okBtnClicked);
-
     connect(ui->okBtn,&QPushButton::clicked,this,&addDialog::acceptCLicked);
     connect(ui->cancelBtn,&QPushButton::clicked,this,&addDialog::cancelClicked);
 }
