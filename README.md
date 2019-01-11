@@ -35,3 +35,4 @@ Technical details:
 
  - This program includes GeoLite2 data created by MaxMind, available from https://www.maxmind.com (CCommons Attribution-ShareAlike 4.0 International License)
  - Algorightms for calculating positions of celestial bodies are published by Paul Schlyter, Stockholm, Sweden http://www.stjarnhimlen.se/comp/ppcomp.html
+ and from https://www.aa.quae.nl/en/reken/hemelpositie.html

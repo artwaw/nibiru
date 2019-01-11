@@ -56,18 +56,20 @@ MainWindow::MainWindow(QWidget *parent) :
     eproxy->setSourceModel(emodel);
     eproxy->setHeaderData(1,Qt::Horizontal,"Name");
     eproxy->setHeaderData(2,Qt::Horizontal,"Surname");
-    eproxy->setHeaderData(3,Qt::Horizontal,"Sex");
-    eproxy->setHeaderData(4,Qt::Horizontal,"Location");
-    eproxy->setHeaderData(7,Qt::Horizontal,"Event type");
-    eproxy->setHeaderData(8,Qt::Horizontal,"Natal");
-    eproxy->setHeaderData(9,Qt::Horizontal,"Event");
-    eproxy->setHeaderData(10,Qt::Horizontal,"Comparative");
-    eproxy->setHeaderData(11,Qt::Horizontal,"Modified on");
-    eproxy->setHeaderData(12,Qt::Horizontal,"Added on");
+    eproxy->setHeaderData(3,Qt::Horizontal,"Birth on");
+    eproxy->setHeaderData(4,Qt::Horizontal,"Sex");
+    eproxy->setHeaderData(5,Qt::Horizontal,"Location");
+    eproxy->setHeaderData(8,Qt::Horizontal,"Event type");
+    eproxy->setHeaderData(9,Qt::Horizontal,"Natal");
+    eproxy->setHeaderData(10,Qt::Horizontal,"Event");
+    eproxy->setHeaderData(11,Qt::Horizontal,"Comparative");
+    eproxy->setHeaderData(12,Qt::Horizontal,"Modified on");
+    eproxy->setHeaderData(13,Qt::Horizontal,"Added on");
     ui->eventListView->setModel(eproxy);
     ui->eventListView->hideColumn(0);
-    ui->eventListView->hideColumn(5);
     ui->eventListView->hideColumn(6);
+    ui->eventListView->hideColumn(7);
+    ui->eventListView->hideColumn(14);
     ui->eventListView->resizeColumnsToContents();
     ui->eventListView->horizontalHeader()->restoreState(settings.value("headerState").toByteArray());
     ui->eventListView->setSortingEnabled(true);
@@ -104,7 +106,7 @@ void MainWindow::quitClicked() {
 
 void MainWindow::zeroConfigDB() {
     QSqlQuery query(eventdb);
-    query.exec("create table edata (id integer primary key, imie text, nazwisko text, sex integer, city text, longitute text, latitude text, etype integer not null, natal integer, event integer, compare integer, modified text, added text, ephemID integer);");
+    query.exec("create table edata (id integer primary key, imie text, nazwisko text, bday text, sex integer, city text, longitute text, latitude text, etype integer not null, natal integer, event integer, compare integer, modified text, added text, ephemID integer);");
     if (query.lastError().type()!=QSqlError::NoError) {
         QMessageBox::critical(this,"Error creating data","Program encoutered error while creating default data structres. Sql db evendb error: "+query.lastError().text());
         geodb.close();
