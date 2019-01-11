@@ -2,6 +2,8 @@
 #include <QApplication>
 #include <QtPlugin>
 #include <QStyleFactory>
+#include <QTranslator>
+#include <QLibraryInfo>
 
 int main(int argc, char *argv[])
 {
@@ -16,6 +18,11 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.setAttribute(Qt::WA_AlwaysShowToolTips);
     //w.show();
-
+    QTranslator qtTranslator;
+    qtTranslator.load("qt_" + QLocale::system().name(),QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    a.installTranslator(&qtTranslator);
+    QTranslator myappTranslator;
+    myappTranslator.load("nibiru_" + QLocale::system().name());
+    a.installTranslator(&myappTranslator);
     return a.exec();
 }

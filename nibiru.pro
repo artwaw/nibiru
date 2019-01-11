@@ -56,10 +56,17 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     LICENSE \
-    README.md
+    README.md \
+    CODE_OF_CONDUCT.md \
+    CONTRIBUTING.md
 
 RESOURCES += \
     res.qrc
+
+TRANSLATIONS = nibiru_en.ts \
+                 nibiru_pl.ts
+
+CODECFORSRC     = UTF-8
 
 win32:CONFIG(release, debug|release): LIBS += -LD:/Qt/5.12.0/mingw73_64/lib/ -lQt5Sql
 else:win32:CONFIG(debug, debug|release): LIBS += -LD:/Qt/5.12.0/mingw73_64/lib/ -lQt5Sqld

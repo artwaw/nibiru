@@ -107,6 +107,9 @@
         </item>
         <item>
          <widget class="QComboBox" name="hrBox">
+          <property name="currentText">
+           <string notr="true">00</string>
+          </property>
           <property name="maxCount">
            <number>24</number>
           </property>

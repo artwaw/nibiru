@@ -104,12 +104,13 @@ void MainWindow::quitClicked() {
 
 void MainWindow::zeroConfigDB() {
     QSqlQuery query(eventdb);
-    query.exec("create table edata(index integer primary key, imie text, nazwisko text, sex integer, city text, longitute text, latitude text, event type integer not null, natal integer, event integer, compare integer, modified text, added text);");
+    query.exec("create table edata (id integer primary key, imie text, nazwisko text, sex integer, city text, longitute text, latitude text, etype integer not null, natal integer, event integer, compare integer, modified text, added text, ephemID integer);");
     if (query.lastError().type()!=QSqlError::NoError) {
         QMessageBox::critical(this,"Error creating data","Program encoutered error while creating default data structres. Sql db evendb error: "+query.lastError().text());
         geodb.close();
         this->close();
         return;
     };
-    query.exec("create table events(index integer primary key, type text");
+    query.exec("create table events(id integer primary key, type text);");
+    query.exec("create table ephems(id integer primary key, mercury integer, venus integer, mars integer, jupiter integer, saturn integer, uranus integer, neptune integer, pluto integer, sun integer);");
 }
