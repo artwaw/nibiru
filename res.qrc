@@ -7,4 +7,10 @@
         <file>img/disacrd.png</file>
         <file>img/prescription.png</file>
     </qresource>
+    <qresource prefix="/lang">
+        <file>lang/qt_en.qm</file>
+        <file>lang/qt_pl.qm</file>
+        <file>lang/qtbase_en.qm</file>
+        <file>lang/qtbase_pl.qm</file>
+    </qresource>
 </RCC>

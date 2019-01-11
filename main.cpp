@@ -19,10 +19,10 @@ int main(int argc, char *argv[])
     w.setAttribute(Qt::WA_AlwaysShowToolTips);
     //w.show();
     QTranslator qtTranslator;
-    qtTranslator.load("qt_" + QLocale::system().name(),QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    qtTranslator.load("qt_" + QLocale::system().name(),":/lang");
     a.installTranslator(&qtTranslator);
     QTranslator myappTranslator;
-    myappTranslator.load("nibiru_" + QLocale::system().name());
+    myappTranslator.load("nibiru_" + QLocale::system().name(),":/lang");
     a.installTranslator(&myappTranslator);
     return a.exec();
 }
