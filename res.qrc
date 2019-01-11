@@ -12,5 +12,7 @@
         <file>lang/qt_pl.qm</file>
         <file>lang/qtbase_en.qm</file>
         <file>lang/qtbase_pl.qm</file>
+        <file>lang/nibiru_en.qm</file>
+        <file>lang/nibiru_pl.qm</file>
     </qresource>
 </RCC>

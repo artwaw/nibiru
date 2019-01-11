@@ -23,6 +23,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 CONFIG += c++11
+CONFIG += lrelease embed_translations
+
+QM_FILES_RESOURCE_PREFIX += /lang/
 
 SOURCES += \
         main.cpp \
@@ -49,22 +52,22 @@ FORMS += \
     setdialog.ui \
     splashdlg.ui
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
+unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
     LICENSE \
     README.md \
     CODE_OF_CONDUCT.md \
-    CONTRIBUTING.md
+    CONTRIBUTING.md \
+    lang/nibiru_en.ts \
+    lang/nibiru_pl.ts
 
 RESOURCES += \
     res.qrc
 
-TRANSLATIONS = nibiru_en.ts \
-                 nibiru_pl.ts
+TRANSLATIONS = lang/nibiru_en.ts \
+                 lang/nibiru_pl.ts
 
 CODECFORSRC     = UTF-8
 
