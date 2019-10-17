@@ -24,6 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 CONFIG += lrelease embed_translations
+CONFIG += sdk_no_version_check
 
 QM_FILES_RESOURCE_PREFIX += /lang/
 
